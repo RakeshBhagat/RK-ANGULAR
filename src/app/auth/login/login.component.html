@@ -1,0 +1,14 @@
+ <div>
+<form #loginForm="ngForm">
+  <div >
+    <label for="username">User Name:</label>
+    <input type="text" name="username" ngModel required minlength="6">
+  </div>
+
+  <div >
+    <label for="password">Password:</label>
+    <input type="text" name="password" ngModel required>
+  </div>
+ <button>Login</button>
+</form>
+</div>

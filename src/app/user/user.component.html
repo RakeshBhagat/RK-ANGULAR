@@ -1,0 +1,97 @@
+<!-- <div>
+    <ng-content select="header"></ng-content>
+  </div>
+
+<h1 class="text-center text-primary">
+  user works! {{title}}
+
+  <ul class="list-unstyled">
+    <li class="well">
+      <img [src]="user.image">
+      <button (click)="MoreInfo(user)">
+        More Info
+      </button>
+      total vote:{{user.vote}}
+      <input type="number"  [(ngModel)]="user.vote" > -->
+       <!-- [value]="user.vote"
+       (change)="user.vote=$event.target.value" -->
+     
+      <!-- <h1>{{user.firstName}} {{user.lastName}}</h1>
+    </li>
+
+  </ul>
+
+</h1>
+
+<div>
+    <ng-content select="footer"></ng-content>
+  </div> -->
+
+
+
+
+
+
+<!-- {{users|json}} -->
+
+
+  <div class="container">
+      <h1 class="text-center text-primary">
+          Title from Parent : {{ title }}
+      </h1>
+          Child Control : 
+              <input type="text" #childControl 
+              (keyup)="onKeyup(childControl.value)">
+  </div>
+  
+  <!-- Data Projection -->
+  <div class="container">
+      <ng-content select="header"></ng-content>
+  </div>
+  
+  <div class="container">
+      <ul class="list-unstyled">
+          <li class="well" *ngFor="let user of users">
+              <div class="row">
+                  <div class="col-xs-2 col-sm-2 col-md-2">
+                      <img [src]="user.image" class="img-responsive img-rounded" >
+                      <button 
+                          (click)="moreInfo(user)"
+                          class="btn btn-info btn-sm">More Info</button>
+                  </div>
+                  <div class="col-xs-10 col-sm-10 col-md-10">
+                      <h1 appHighlight > hello {{ user.firstName | uppercase }} {{ user.lastName }}</h1>
+                      <p>Date Of Birth : {{ user.dob | date :'MM/dd/yyyy' }}</p>
+                    <p *appUnless="!user.isWorking">
+                        Income : {{ user.income | currency:'EUR' }}
+                    </p>
+
+                      <p>Income : {{ user.income }}</p>
+                      <em class=pull-right>
+                          Total Votes  : {{ user.votes }}
+                          <!-- <input type="number" 
+                              [value]="user.votes"
+                              (change)="user.votes=$event.target.value"> -->
+                          <input type="number" [(ngModel)]="user.votes">
+                          <!-- input type="number" [ngModel]="user.votes" (ngModelChange)="$event" -->
+                      </em>
+                  </div>
+              </div>
+          </li>
+      </ul>
+  </div>
+  <div class="container">
+      <ng-content select=".section"></ng-content>
+  </div>
+  <div class="container">
+      <ng-content select="footer"></ng-content>
+  </div>
+
+
+  <div [ngSwitch]="id">
+    <div *ngSwitchCase="'1'">One</div>
+    <div *ngSwitchCase="'2'">Two</div>
+    <div *ngSwitchCase="'3'"></div>
+    <div *ngSwitchDefault></div>
+
+  </div>
